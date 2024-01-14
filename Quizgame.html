@@ -1,0 +1,36 @@
+def Display_questions(question,options):
+    print(question)
+    for i,option in enumerate(options,1):
+        print(f"{i}.{option}")
+    Your_answer=input("Your choice(enter the number):")
+    return Your_answer
+def Check_Answer(Your_answer,correct_answer):
+    return Your_answer.lower()==correct_answer.lower()
+def Play_Quiz():
+    score=0
+    total_questions=0
+    print("welcome to the 7hills Quiz Game!")
+    print("Rules for the Game:")
+    print("1.To test IQ power of your brain the game is here to play.")
+    print("2.You have to answer the mulitple choice qustions given in the quiz.")
+    print("3.Answer every questions according to your knowledge.")
+    print("4.For the multiple-choice questions, enter the number corresponding to your best answer.")
+    print("5.Each correct answer carries one point.")
+    print("6.The correct answer will display and your points will increase according to your correct answer.")
+    print("7.Let's play the game...Good luck!")
+    questions=[{'question':'Who developed Python language?','options':['a.Niene Stom','b.Guido van Rossum','c.Wick van Rossum'],'correct_answer':'b.Guido van Rossum'},
+               {'question':'What are the two main types of functions in Python?','options':['a.Custom function','b.System function','c.Built-in-function and User defined function'],'correct_answer':'c.Built-in-function and User defined function'},
+               {'question':'which one of the following is not a keyword in Python language?','options':['a.eval','b.pass','c.assert'],'correct_answer':'a.eval'},
+               {'question':'which of the following statements is used to create an empty set in python?','options':['a.()','b.set()','c.{}'],'correct_answer':'b.set()'},
+               {'question':'Which of the following is not a core data type in Python programming?','options':['a.class','b.lists','c.Dictionary'],'correct_answer':'a.class'}]
+    for question_data in questions:
+        total_questions+=1
+        Your_choice=Display_questions(question_data['question'],question_data['options'])
+        if Check_Answer(Your_choice,str(question_data['options'].index(question_data['correct_answer'])+1)):
+            print("Correct answer!You got 1 point.\n")
+            score+=1
+        else:
+            print(f"Wrong answer!The correct answer is {question_data['correct_answer']}.\n")
+        print(f"You scored {score} / {total_questions} points in the quiz! Well done!")
+if __name__=="__main__":
+    Play_Quiz()
